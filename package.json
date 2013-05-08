@@ -1,0 +1,42 @@
+{
+  "name": "grunt-hash-manifest",
+  "description": "Creates manifest of files and associated hashes",
+  "version": "0.4.0",
+  "homepage": "https://github.com/gseguin/grunt-hash-manifest.git",
+  "author": {
+    "name": "Ghislain Seguin",
+    "email": "ghislain@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gseguin/grunt-hash-manifest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gseguin/grunt-hash-manifest/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gseguin/grunt-hash-manifest/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt": "~0.4.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
