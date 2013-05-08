@@ -1,6 +1,6 @@
 # grunt-hash-manifest [![Build Status](https://secure.travis-ci.org/gseguin/grunt-hash-manifest.png?branch=master)](http://travis-ci.org/gseguin/grunt-hash-manifest)
 
-> Creates manifest of files and associated hashes
+Creates manifest of files and associated hashes
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -19,8 +19,8 @@ grunt.loadNpmTasks('grunt-hash-manifest');
 
 
 ### Options
-`algo` specifies which hashing algorithm to use. The default is `md5`. The choices are limited to what node's `crypto` module supports.
-`cwd` is the directory in which to expand the globbing patterns as well as the root for `dest`
+- `algo` specifies which hashing algorithm to use. The default is `md5`. The choices are limited to what node's `crypto` module supports.
+- `cwd` is the directory in which to expand the globbing patterns as well as the root for `dest`
 
 ### Usage Examples
 
