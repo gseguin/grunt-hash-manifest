@@ -27,7 +27,7 @@ module.exports = function( grunt ) {
 				absPath = path.resolve( cwd, file );
 
 			grunt.log.debug( "Hashing '" + file + "'" );
-			hash.update( grunt.file.read( absPath, "ascii" ) );
+			hash.update( grunt.file.read( absPath, { encoding: null }) );
 			hashes.push( file + " " + hash.digest( "hex" ) );
 		});
 
