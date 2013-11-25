@@ -1,15 +1,15 @@
 {
   "name": "grunt-hash-manifest",
-  "description": "Fork of Grunt hash Manifest to fix with binary files",
+  "description": "Creates manifest of files and associated hashes",
   "version": "0.4.1",
   "homepage": "https://github.com/gseguin/grunt-hash-manifest.git",
   "author": {
-    "name": "David J. Bradshaw",
-    "email": "dave@bradshaw.net"
+    "name": "Ghislain Seguin",
+    "email": "ghislain@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/davidjbradshaw/grunt-hash-manifest.git"
+    "url": "git://github.com/gseguin/grunt-hash-manifest.git"
   },
   "bugs": {
     "url": "https://github.com/gseguin/grunt-hash-manifest/issues"
@@ -22,7 +22,7 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt test"
