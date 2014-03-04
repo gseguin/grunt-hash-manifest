@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function ( grunt ) {
+module.exports = function( grunt ) {
 	"use strict";
 
 	// Project configuration.
@@ -20,6 +20,14 @@ module.exports = function ( grunt ) {
 			options: {
 				jshintrc: ".jshintrc"
 			}
+		},
+
+		jscs: {
+			options: {
+				config: ".jscs.json"
+			},
+			gruntfile: [ "Gruntfile.js" ],
+			tasks: [ "tasks/*.js" ]
 		},
 
 		// Before generating any new files, remove any previously-created files.
@@ -84,20 +92,17 @@ module.exports = function ( grunt ) {
 		nodeunit: {
 			tests: [ "test/*_test.js" ]
 		}
-	} );
+	});
 
 	// Actually load this plugin"s task(s).
 	grunt.loadTasks( "tasks" );
 
-	// These plugins provide necessary tasks.
-	grunt.loadNpmTasks( "grunt-contrib-jshint" );
-	grunt.loadNpmTasks( "grunt-contrib-clean" );
-	grunt.loadNpmTasks( "grunt-contrib-nodeunit" );
+	require( "load-grunt-tasks" )( grunt );
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin"s task(s), then test the result.
 	grunt.registerTask( "test", [ "clean", "hash-manifest", "nodeunit" ] );
 
 	// By default, lint and run all tests.
-	grunt.registerTask( "default", [ "jshint", "test" ] );
+	grunt.registerTask( "default", [ "jshint", "jscs", "test" ] );
 };
