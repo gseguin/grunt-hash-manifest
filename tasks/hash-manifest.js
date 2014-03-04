@@ -7,14 +7,16 @@ module.exports = function( grunt ) {
 		path = require( "path" );
 
 	grunt.registerMultiTask( "hash-manifest", "Create list of md5 hashes", function() {
-		var algo = this.data.options.algo || "md5",
+		var format = this.data.options.format || "plain",
+			algo = this.data.options.algo || "md5",
 			cwd = this.data.options.cwd || "",
-			dest = this.data.dest || "manifest-md5.txt",
+			dest = this.data.dest || "manifest-md5." + (format === "json" ? "json" : "txt"),
 			absDest = path.resolve( cwd, dest ),
 			options = _.extend( {}, this.data.options, { filter: "isFile" } ),
 			// Exclude the manifest from the file list in case it's still there from a previous run
 			files = _.reject( grunt.file.expand( options, this.data.src ), function( file ) { return file === dest; } ),
-			hashes = [];
+			hashes = {},
+			content = "";
 
 		// remove dest file before creating it, to make sure itself is not included
 		if ( fs.existsSync( absDest ) ) {
@@ -28,10 +30,18 @@ module.exports = function( grunt ) {
 
 			grunt.log.debug( "Hashing '" + file + "'" );
 			hash.update( grunt.file.read( absPath, { encoding: null }) );
-			hashes.push( file + " " + hash.digest( "hex" ) );
+			hashes[ file ] = hash.digest( "hex" );
 		});
 
-		grunt.file.write( absDest, hashes.join( "\n" ) + "\n" );
-		grunt.log.writeln( "Wrote " + absDest + " with " + hashes.length + " hashes" );
+		if ( format === "json" ) {
+			content = JSON.stringify( hashes, null, 4 );
+		} else {
+			Object.keys(hashes).forEach( function( hash ) {
+				content += hash + " " + hashes[ hash ] + "\n";
+			});
+		}
+
+		grunt.file.write( absDest, content );
+		grunt.log.writeln( "Wrote " + absDest + " with " + files.length + " hashes" );
 	});
 };

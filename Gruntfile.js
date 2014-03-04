@@ -85,7 +85,15 @@ module.exports = function( grunt ) {
 				},
 				src: [ "<%= test_vars.match%>" ],
 				dest: "../../tmp/manifest-expand-sha1.txt"
-			}
+			},
+			"md5-all-json": {
+				options: {
+					cwd: "test/fixtures",
+					format: "json"
+				},
+				src: [ "**/*" ],
+				dest: "../../tmp/manifest-all-md5.json"
+			},
 		},
 
 		// Unit tests.
