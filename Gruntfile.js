@@ -91,6 +91,16 @@ module.exports = function( grunt ) {
 		// Unit tests.
 		nodeunit: {
 			tests: [ "test/*_test.js" ]
+		},
+
+		"release-it": {
+			options: {
+				pkgFiles: [ "package.json" ],
+				commitMessage: "Release %s",
+				tagName: "v%s",
+				tagAnnotation: "Release %s",
+				buildCommand: false
+			}
 		}
 	});
 
