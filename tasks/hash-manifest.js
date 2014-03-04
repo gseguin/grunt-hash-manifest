@@ -15,8 +15,8 @@ module.exports = function( grunt ) {
 			options = _.extend( {}, this.data.options, { filter: "isFile" } ),
 			// Exclude the manifest from the file list in case it's still there from a previous run
 			files = _.reject( grunt.file.expand( options, this.data.src ), function( file ) { return file === dest; } ),
-			hashes = format === "json" ? {} : [],
-			isArray = _.isArray(hashes) ? true : false;
+			hashes = {},
+			content = "";
 
 		// remove dest file before creating it, to make sure itself is not included
 		if ( fs.existsSync( absDest ) ) {
@@ -30,20 +30,18 @@ module.exports = function( grunt ) {
 
 			grunt.log.debug( "Hashing '" + file + "'" );
 			hash.update( grunt.file.read( absPath, { encoding: null }) );
-
-			if (!isArray) {
-				hashes[file] = hash.digest( "hex" );
-			} else {
-				hashes.push( file + " " + hash.digest( "hex" ) );
-			}
+			hashes[file] = hash.digest( "hex" );
 		});
 
-		if (!isArray) {
-			grunt.file.write( absDest, JSON.stringify(hashes, null, 4) );
+		if ( format === "json" ) {
+			content = JSON.stringify(hashes, null, 4);
 		} else {
-			grunt.file.write( absDest, hashes.join( "\n" ) + "\n" );
+			Object.keys(hashes).forEach( function( hash ) {
+				content += hash + " " + hashes[hash] + "\n";
+			});
 		}
 
+		grunt.file.write( absDest, content );
 		grunt.log.writeln( "Wrote " + absDest + " with " + files.length + " hashes" );
 	});
 };
