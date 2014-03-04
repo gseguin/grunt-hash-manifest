@@ -6,7 +6,7 @@ exports[ "hash-manifest" ] = {
 
 		var actual, expected;
 
-		test.expect( 6 );
+		test.expect( 7 );
 
 		actual = fs.readFileSync( "tmp/manifest-all-md5.txt", "utf8" );
 		expected = fs.readFileSync( "test/expected/manifest-all-md5.txt", "utf8" );
@@ -32,6 +32,9 @@ exports[ "hash-manifest" ] = {
 		expected = fs.readFileSync( "test/expected/manifest-expand-sha1.txt", "utf8" );
 		test.equal( expected, actual );
 
+		actual = fs.readFileSync( "tmp/manifest-all-md5.json", "utf8" );
+		expected = fs.readFileSync( "test/expected/manifest-all-md5-json.txt", "utf8" );
+		test.equal( expected, actual );
 
 		test.done();
 	}
