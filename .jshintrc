@@ -16,6 +16,5 @@
 	"latedef": true,
 	"newcap": true,
 	"sub": true,
-	"node": true,
-	"es5": true
+	"node": true
 }
