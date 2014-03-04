@@ -30,14 +30,14 @@ module.exports = function( grunt ) {
 
 			grunt.log.debug( "Hashing '" + file + "'" );
 			hash.update( grunt.file.read( absPath, { encoding: null }) );
-			hashes[file] = hash.digest( "hex" );
+			hashes[ file ] = hash.digest( "hex" );
 		});
 
 		if ( format === "json" ) {
-			content = JSON.stringify(hashes, null, 4);
+			content = JSON.stringify( hashes, null, 4 );
 		} else {
 			Object.keys(hashes).forEach( function( hash ) {
-				content += hash + " " + hashes[hash] + "\n";
+				content += hash + " " + hashes[ hash ] + "\n";
 			});
 		}
 
