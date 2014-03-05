@@ -21,6 +21,7 @@ grunt.loadNpmTasks('grunt-hash-manifest');
 ### Options
 - `algo` specifies which hashing algorithm to use. The default is `md5`. The choices are limited to what node's `crypto` module supports.
 - `cwd` is the directory in which to expand the globbing patterns as well as the root for `dest`
+- `format` is the output format. It can be `txt` or `json`. Default is `txt`
 
 ### Usage Examples
 
