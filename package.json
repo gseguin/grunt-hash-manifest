@@ -1,7 +1,7 @@
 {
   "name": "grunt-hash-manifest",
   "description": "Creates manifest of files and associated hashes",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "homepage": "https://github.com/gseguin/grunt-hash-manifest.git",
   "author": {
     "name": "Ghislain Seguin",
@@ -32,7 +32,7 @@
     "grunt-contrib-jshint": "0.6.3",
     "grunt-contrib-nodeunit": "0.3.2",
     "grunt-contrib-clean": "0.5.0",
-	"grunt-git-authors": "1.2.0",
+    "grunt-git-authors": "1.2.0",
     "grunt-jscs-checker": "0.3.2",
     "grunt-release-it": "0.1.1",
     "load-grunt-tasks": "0.3.0"
